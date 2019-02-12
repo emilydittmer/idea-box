@@ -8,6 +8,7 @@ var ideaBox = document.querySelector('.ideas');
 
 
 
+
 saveButton.addEventListener('click', function(){
   displayIdea(ideaTitleInput, ideaBodyInput);
 })
