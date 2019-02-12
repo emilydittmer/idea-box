@@ -9,10 +9,10 @@ var ideaBox = document.querySelector('.ideas');
 // var cardId = 1 (cardID++)
 
 
-
 saveButton.addEventListener('click', function(){
   displayIdea(cardId, ideaTitleInput, ideaBodyInput);
 })
+
 
 // function displayIdea (cardId, ideaTitle, ideaBody, quality) {
 //   var html =      `<section class="idea-box ideaBoxId${cardId}">
@@ -23,3 +23,4 @@ saveButton.addEventListener('click', function(){
 //                   </section>`
 // ideaBox.insertAdjacentHTML('beforeend', html);
 // }
+
