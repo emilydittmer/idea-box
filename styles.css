@@ -1,0 +1,37 @@
+body {
+  background-color: #eaeaea;
+  display: grid;
+  grid-template-rows: 1fr 2fr 5fr;
+}
+
+header {
+  background-color: #524649;
+  color: #b2a1b1;
+  display: flex;
+  position: relative;
+}
+
+h1 {
+  bottom: 8%;
+  position: absolute;
+}
+
+span {
+  color: white;
+}
+
+.search {
+  height: 35px;
+  justify-content: flex-end;
+  position: absolute;
+  right: 3%;
+  bottom: 30%;
+}
+
+#search-field {
+  width: 270px;
+}
+
+#search-btn {
+  width: 39px;
+}
