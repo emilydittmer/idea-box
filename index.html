@@ -6,21 +6,30 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width= device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
       <h1 class="title">ideabox<span>triples</span></h1>
-      <input type="search" id="search-field"></input>
-      <button id="search-btn"></button>
+      <div id="search-field">
+        <input type="search" id="search-field" class="search" placeholder="Search"></input>
+        <button id="search-btn" class="search"><i class="fas fa-search"></i></button>
+      </div>
     </header>
     <section class="form">
       <h2 id="idea-title">Title</h2>
-      <input type="text" id="title-input"></input>
+      <input type="text" id="title-input" class="idea-inputs"></input>
       <h2 id="idea-body">Body</h2>
-      <input type="text" id="body-input"></input>
-      <button id="save-btn"></button>
+      <textarea rows="4" cols="50" id="body-input" class="idea-inputs"></textarea>
+      <button id="save-btn">Save</button>
     </section>
     <section class="ideas">
+      <section class="idea-box-id">
+        <h3 class="idea-box-title">Lorem ipsum</h3>
+        <h4 class="idea-box-body">Lorem ipsum dolor sit amet, consectetur adepiscing phareta nisi et luctuselit. Sed mollis mollis est id molestie. Donis faucibus interdum malesuada.</h4>
+        <hr class="idea-box-seperation">
+        
+        <h5 class="quality">Quality: Swill</h5>
     </section>
   </body>
   <script type="text/javascript" src="idea.js"></script>
