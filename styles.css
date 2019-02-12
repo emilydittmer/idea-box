@@ -1,23 +1,27 @@
 body {
-  background-color: #eaeaea;
+  background-color: #edf2f2;
   display: grid;
   grid-template-rows: 1fr 2fr 5fr;
+  font-family: "Open Sans", sans-serif;
 }
 
 header {
-  background-color: #524649;
+  background-color: #322a30;
   color: #b2a1b1;
   display: flex;
   position: relative;
+  grid-row: 1;
 }
 
 h1 {
-  bottom: 8%;
-  position: absolute;
+  letter-spacing: .2rem;
+  margin-left: 1%;
+  font-weight: 800;
+  font-size: 3rem;
 }
 
 span {
-  color: white;
+  color: #fff;
 }
 
 .search {
@@ -34,4 +38,34 @@ span {
 
 #search-btn {
   width: 39px;
+}
+
+.form {
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 22% 56% 22%;
+  background-color: #edf2f2;
+}
+
+.form h2, #idea-title, #title-input, #idea-body, #body-input, #save-btn {
+  grid-column: 2;
+}
+
+h2 {
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.ideas {
+  grid-row: 3;
+  background-color: #fbfdfd;
+}
+
+@media only screen and (max-width: 720px) {
+  header {
+    display: block;
+  }
+/*  #search-field {
+    position: unset;*/
+  }
 }
