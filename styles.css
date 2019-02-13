@@ -9,16 +9,16 @@ header {
   background-color: #322a30;
   color: #b2a1b1;
   display: flex;
-  position: relative;
   grid-row: 1;
+  position: relative;
 }
 
 h1 {
+  bottom: 1%;
+  font-size: 3rem;
+  font-weight: 800;
   letter-spacing: .05rem;
   margin-left: 3%;
-  font-weight: 800;
-  font-size: 3rem;
-  bottom: 1%;
 }
 
 span {
@@ -26,8 +26,8 @@ span {
 }
 
 .search {
-  border: solid 2px #ACAAB6;
   border-radius: 5px;
+  border: solid 2px #ACAAB6;
   bottom: 30%;
   height: 35px;
   justify-content: flex-end;
@@ -48,10 +48,10 @@ span {
 }
 
 .form {
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: 28.5% 50% 21.5%;
   background-color: #edf2f2;
+  display: grid;
+  grid-row: 2;
+  grid-template-columns: 25% 50% 25%;
 }
 
 .form h2, #idea-title, #title-input, #idea-body, #body-input, #save-btn {
@@ -68,10 +68,13 @@ h2 {
 }
 
 .idea-inputs {
-  border: solid 2px #ACAAB6;
   border-radius: 5px;
+  border: solid 2px #ACAAB6;
   height: 41px;
-  width: 81%;
+}
+
+textarea {
+  resize: none;
 }
 
 #body-input {
@@ -90,13 +93,13 @@ h2 {
   font-weight: 800;
   height: 41px;
   margin: 24px 0 24px 0;
-  width: 81%;
 }
 
 .ideas {
   background-color: #fbfdfd;
   grid-row: 3;
 }
+
 .idea-box {
   border: solid 2px #ACAAB6;
   border-radius: 5px;
@@ -105,6 +108,7 @@ h2 {
   overflow-wrap: normal;
   height: auto;
 }
+
 .idea-box-title {
   color: #5E5C6B;
   font-weight: 800;
@@ -136,6 +140,7 @@ h2 {
   
 }
 @media only screen and (max-width: 550px) {
+  
   header {
     height: 130%;
   }
@@ -149,16 +154,17 @@ h2 {
   }
 
   .form {
+    grid-template-columns: 15% 70% 15%;
     margin: 50px 0 0 0;
   }
 
   .search {
     bottom: 8%;
-    left: 36%;
+    left: 10%;
   }
 
   #search-field {
     padding: 0 0 0 50px;
-    width: 140px;
+    width: 77%;
   }
 }
