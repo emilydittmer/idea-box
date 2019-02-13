@@ -71,7 +71,7 @@ h2 {
   border: solid 2px #ACAAB6;
   border-radius: 5px;
   height: 41px;
-  width: 597px;
+  width: 81%;
 }
 
 #body-input {
@@ -90,7 +90,7 @@ h2 {
   font-weight: 800;
   height: 41px;
   margin: 24px 0 24px 0;
-  width: 597px;
+  width: 81%;
 }
 
 .ideas {
@@ -98,11 +98,30 @@ h2 {
   background-color: #fbfdfd;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 550px) {
   header {
-    display: block;
+    height: 130%;
   }
-/*  #search-field {
-    position: unset;*/
+
+  h1 {
+    bottom: 40%;
+    font-size: 10vw;
+    left: 10%;
+    margin: 0;
+    position: absolute;
+  }
+
+  .form {
+    margin: 50px 0 0 0;
+  }
+
+  .search {
+    bottom: 8%;
+    left: 36%;
+  }
+
+  #search-field {
+    padding: 0 0 0 50px;
+    width: 140px;
   }
 }
