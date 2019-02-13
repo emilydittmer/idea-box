@@ -1,9 +1,9 @@
-class ideaCards {
-  constructor(title, body, cardId) {
+class Idea {
+  constructor(id, title, body) {
+    this.id = id;
     this.title = title;
     this.body = body;
     this.quality = 'Swill';
-    this.cardId = cardId;
   }
 }
 //function updateContent
