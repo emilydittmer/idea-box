@@ -14,8 +14,8 @@ header {
 }
 
 h1 {
-  letter-spacing: .2rem;
-  margin-left: 1%;
+  letter-spacing: .05rem;
+  margin-left: 3%;
   font-weight: 800;
   font-size: 3rem;
   bottom: 1%;
@@ -37,7 +37,7 @@ span {
 
 #search-field {
   padding: 0 0 0 7px;
-  width: 270px;
+  width: 25%;
 }
 
 #search-btn {
@@ -50,7 +50,7 @@ span {
 .form {
   grid-row: 2;
   display: grid;
-  grid-template-columns: 22% 56% 22%;
+  grid-template-columns: 28.5% 50% 21.5%;
   background-color: #edf2f2;
 }
 
@@ -89,6 +89,7 @@ h2 {
   font-size: 20px;
   font-weight: 800;
   height: 41px;
+  margin: 24px 0 24px 0;
   width: 597px;
 }
 
