@@ -5,6 +5,10 @@ class Idea {
     this.body = body;
     this.quality = 'Swill';
   }
+  saveToStorage(){
+    var ideas = [];
+    
+  }
 }
 //function updateContent
 
