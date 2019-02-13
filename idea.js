@@ -5,15 +5,26 @@ class Idea {
     this.body = body;
     this.quality = 'Swill';
   }
-  saveToStorage(){
-    var ideas = [];
-    
+  saveToStorage(ideasArray){
+    console.log(ideasArray);
+    var stringIdeas = JSON.stringify(ideasArray);
+    console.log(stringIdeas);
+    localStorage.setItem('stringIdeas', stringIdeas);
+    //all Ideas - stringify and set to variable of stringed ideas
+    //var for string ideas to localstorage
+
+
   }
 }
 //function updateContent
+//get localStorage 
+//JSON parse
+//pass back to main
 
 //function deleteFromStorage
 
-//function saveToStorage
+///event.target to find id and exit
+
+
 
 //function updateQuality

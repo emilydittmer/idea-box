@@ -2,6 +2,7 @@ var titleInput = document.querySelector('#title-input');
 var bodyInput = document.querySelector('#body-input');
 var saveButton = document.querySelector('#save-btn');
 var ideaBox = document.querySelector('.ideas');
+var allIdeas = [];
 
 saveButton.addEventListener('click', saveIdea);
 
@@ -11,10 +12,9 @@ function saveIdea() {
   var id = Date.now();
   var newIdea = new Idea(id, title, body);
   displayIdea(newIdea);
-
-  //localStorage.setItem(newIdea)
-  //stringify set Object(id, newIdea)
-  //
+  allIdeas.push(newIdea);
+  console.log(allIdeas);
+  newIdea.saveToStorage(allIdeas);
 
   //window.load- get from local storage
 }
@@ -36,3 +36,8 @@ function displayIdea(ideaObj) {
 
 //quality buttons switch case
 
+// on page load, pull ideas from localstorage
+// parse as object, store as variable
+// foreach parsed array, push back through displayidea
+
+//localStorage.hasOwnProperty (checks id)
