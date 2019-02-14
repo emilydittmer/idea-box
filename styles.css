@@ -127,18 +127,27 @@ textarea {
 .idea-box-seperation {
   color: #ACAAB6;
   margin: 0;
+  padding: 0;
 }
 
 .quality {
+  display: inline-block;
   color: #5E5C6B;
   font-weight: 800;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0;
   margin: 0;
 }
-.votes {
-  
+.vote-buttons{
+  height: 1.5rem;
+  padding: 2px 5px 0 5px;
+  margin: 0;
 }
+
+/*.delete-button {
+  height: 1.5rem;
+
+}*/
 @media only screen and (max-width: 550px) {
   
   header {

@@ -3,7 +3,6 @@ var bodyInput = document.querySelector('#body-input');
 var saveButton = document.querySelector('#save-btn');
 var ideaBox = document.querySelector('.ideas');
 var allIdeas = JSON.parse(localStorage.getItem('stringIdeas')) || [];
-
 saveButton.addEventListener('click', saveIdea);
 
 function saveIdea() {
@@ -16,7 +15,6 @@ function saveIdea() {
   console.log(allIdeas);
   newIdea.saveToStorage(allIdeas);
 }
-
 function displayIdea(ideaObj) {
   console.log(ideaObj.id);
   //var cardContainer = create section 
@@ -25,10 +23,33 @@ function displayIdea(ideaObj) {
                   <h3 class="idea-box-title">${ideaObj.title}</h3>
                   <h4 class="idea-box-body">${ideaObj.body}</h4>
                   <hr class="idea-box-seperation">
+                  <input type="image" src="images/downvote.svg" class="vote-buttons" id="downvote" alt="Down Vote">
+                  <input type="image" src="images/upvote.svg" class="vote-buttons" id="upvote" alt="Up Vote">
                   <h5 class="quality">Quality: ${ideaObj.quality}</h5>
                   </section>`
    ideaBox.insertAdjacentHTML('afterbegin',ideaCard);
 }
+
+ideaBox.addEventListener('click', clickHandler);
+  
+function clickHandler(e){
+ if (e.target.id === 'upvote'){
+    var id = parseInt(e.target.parentElement.id);
+var ideaWeWant;
+for (var i = 0; i < allIdeas.length; i++) {
+    if (allIdeas[i].id === id) {
+       ideaWeWant = allIdeas[i];
+       ideaWeWant.quality = 'Fucking Amazing and aweful UGH';
+    }
+    console.log(ideaWeWant);
+}
+
+
+  }
+
+
+}
+
 
 //quality buttons switch case
 window.onload = loadIdeas(allIdeas);
