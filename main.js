@@ -20,13 +20,16 @@ function displayIdea(ideaObj) {
   //var cardContainer = create section 
   //cardContainer.dataset.id = cardId;
   var ideaCard =  `<section class="idea-box" id="${ideaObj.id}">
-                  <h3 class="idea-box-title">${ideaObj.title}</h3>
-                  <h4 class="idea-box-body">${ideaObj.body}</h4>
-                  <hr class="idea-box-seperation">
-                  <input type="image" src="images/downvote.svg" class="vote-buttons" id="downvote" alt="Down Vote">
-                  <input type="image" src="images/upvote.svg" class="vote-buttons" id="upvote" alt="Up Vote">
-                  <h5 class="quality">Quality: ${ideaObj.quality}</h5>
-                  <input type="image" src="images/delete.svg" class="vote-buttons" id="delete" alt="Delete">
+                      <h3 class="idea-box-title">${ideaObj.title}</h3>
+                      <h4 class="idea-box-body">${ideaObj.body}</h4>
+                    <div class="quality-section">
+                      <div>
+                        <input type="image" src="images/downvote.svg" class="buttons" id="downvote" alt="Down Vote">
+                        <input type="image" src="images/upvote.svg" class="buttons" id="upvote" alt="Up Vote">
+                        <h5>Quality: ${ideaObj.quality}</h5>
+                      </div>
+                      <input type="image" src="images/delete.svg" class="buttons" id="delete" alt="Delete Button">
+                    </div>
                   </section>`
    ideaBox.insertAdjacentHTML('afterbegin',ideaCard);
 }
@@ -36,6 +39,7 @@ ideaBox.addEventListener('click', clickHandler);
 function clickHandler(e){
  if (e.target.id === 'upvote'){
     var id = parseInt(e.target.parentElement.id);
+   
 var ideaWeWant;
 for (var i = 0; i < allIdeas.length; i++) {
     if (allIdeas[i].id === id) {
