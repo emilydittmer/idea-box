@@ -26,6 +26,7 @@ function displayIdea(ideaObj) {
                   <input type="image" src="images/downvote.svg" class="vote-buttons" id="downvote" alt="Down Vote">
                   <input type="image" src="images/upvote.svg" class="vote-buttons" id="upvote" alt="Up Vote">
                   <h5 class="quality">Quality: ${ideaObj.quality}</h5>
+                  <input type="image" src="images/delete.svg" class="vote-buttons" id="delete" alt="Delete">
                   </section>`
    ideaBox.insertAdjacentHTML('afterbegin',ideaCard);
 }
@@ -39,15 +40,33 @@ var ideaWeWant;
 for (var i = 0; i < allIdeas.length; i++) {
     if (allIdeas[i].id === id) {
        ideaWeWant = allIdeas[i];
-       ideaWeWant.quality = 'Fucking Amazing and aweful UGH';
-    }
+       ideaWeWant.quality = 'Plausible';
+      }
     console.log(ideaWeWant);
-}
-
-
+    }
   }
-
-
+  if(e.target.id === 'downvote'){
+    var id = parseInt(e.target.parentElement.id);
+    var ideaWeWant;
+    for (var i = 0; i < allIdeas.length; i++) {
+      if (allIdeas[i].id === id) {
+       ideaWeWant = allIdeas[i];
+       ideaWeWant.quality = 'Genius';
+      }
+      console.log(ideaWeWant);
+    }
+  }
+  if(e.target.id === 'delete'){
+    var id = parseInt(e.target.parentElement.id);
+    console.log(allIdeas);
+    for (var i = 0; i < allIdeas.length; i++){
+    console.log(allIdeas[i].id === id);
+      if (allIdeas[i].id === id){
+        allIdeas.splice(i, 1);
+        break;
+      }
+    }
+  }
 }
 
 
