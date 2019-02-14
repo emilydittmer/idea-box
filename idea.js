@@ -15,6 +15,10 @@ class Idea {
 
 
   }
+  deleteFromStorage(){
+    var idea = 'idea' + id;
+    localStorage.removeItem(idea);
+  }
 }
 //function updateContent
 //get localStorage 

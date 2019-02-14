@@ -39,13 +39,36 @@ ideaBox.addEventListener('click', clickHandler);
 function clickHandler(e){
  if (e.target.id === 'upvote'){
     var id = parseInt(e.target.parentElement.id);
+   
+var ideaWeWant;
+for (var i = 0; i < allIdeas.length; i++) {
+    if (allIdeas[i].id === id) {
+       ideaWeWant = allIdeas[i];
+       ideaWeWant.quality = 'Plausible';
+      }
+    console.log(ideaWeWant);
+    }
+  }
+  if(e.target.id === 'downvote'){
+    var id = parseInt(e.target.parentElement.id);
     var ideaWeWant;
     for (var i = 0; i < allIdeas.length; i++) {
       if (allIdeas[i].id === id) {
-        ideaWeWant = allIdeas[i];
-        ideaWeWant.quality = 'AMAZING!';
+       ideaWeWant = allIdeas[i];
+       ideaWeWant.quality = 'Genius';
       }
       console.log(ideaWeWant);
+    }
+  }
+  if(e.target.id === 'delete'){
+    var id = parseInt(e.target.parentElement.id);
+    console.log(allIdeas);
+    for (var i = 0; i < allIdeas.length; i++){
+    console.log(allIdeas[i].id === id);
+      if (allIdeas[i].id === id){
+        allIdeas.splice(i, 1);
+        break;
+      }
     }
   }
 }
