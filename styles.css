@@ -170,11 +170,10 @@ textarea {
 
   .search {
     bottom: 8%;
-    left: 10%;
+    right: 13%;
   }
 
   #search-field {
-    padding: 0 0 0 50px;
     width: 77%;
   }
 
