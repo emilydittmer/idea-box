@@ -13,15 +13,15 @@ function saveIdea() {
   displayIdea(newIdea);
   allIdeas.push(newIdea);
   console.log(allIdeas);
-  newIdea.saveToStorage(allIdeas);
+  newIdea.saveToStorage();
 }
 function displayIdea(ideaObj) {
   console.log(ideaObj.id);
   //var cardContainer = create section 
   //cardContainer.dataset.id = cardId;
   var ideaCard =  `<section class="idea-box" id="${ideaObj.id}">
-                      <h3 class="idea-box-title">${ideaObj.title}</h3>
-                      <h4 class="idea-box-body">${ideaObj.body}</h4>
+                      <h3 class="idea-box-title" contenteditable="true">${ideaObj.title}</h3>
+                      <h4 class="idea-box-body" contenteditable="true">${ideaObj.body}</h4>
                     <div class="quality-section">
                       <div>
                         <input type="image" src="images/downvote.svg" class="buttons" id="downvote" alt="Down Vote">
@@ -37,14 +37,14 @@ function displayIdea(ideaObj) {
 ideaBox.addEventListener('click', clickHandler);
   
 function clickHandler(e){
- if (e.target.id === 'upvote'){
+  if (e.target.id === 'upvote'){
     var id = parseInt(e.target.parentElement.id);
    
-var ideaWeWant;
-for (var i = 0; i < allIdeas.length; i++) {
-    if (allIdeas[i].id === id) {
-       ideaWeWant = allIdeas[i];
-       ideaWeWant.quality = 'Plausible';
+    var ideaWeWant;
+    for (var i = 0; i < allIdeas.length; i++) {
+      if (allIdeas[i].id === id) {
+        ideaWeWant = allIdeas[i];
+        ideaWeWant.quality = 'Plausible';
       }
     console.log(ideaWeWant);
     }
@@ -54,22 +54,23 @@ for (var i = 0; i < allIdeas.length; i++) {
     var ideaWeWant;
     for (var i = 0; i < allIdeas.length; i++) {
       if (allIdeas[i].id === id) {
-       ideaWeWant = allIdeas[i];
-       ideaWeWant.quality = 'Genius';
+        ideaWeWant = allIdeas[i];
+        ideaWeWant.quality = 'Genius';
       }
       console.log(ideaWeWant);
     }
   }
   if(e.target.id === 'delete'){
-    var id = parseInt(e.target.parentElement.id);
-    console.log(allIdeas);
-    for (var i = 0; i < allIdeas.length; i++){
-    console.log(allIdeas[i].id === id);
-      if (allIdeas[i].id === id){
-        allIdeas.splice(i, 1);
-        break;
-      }
-    }
+    var card = e.target.closest('.idea-box');
+    var id = parseInt(card.id);
+    card.remove();
+    var neededIdea = allIdeas.find(function(idea) {
+      console.log(idea.id);
+      console.log(id);
+      return idea.id === id
+    });
+    console.log(neededIdea);
+    neededIdea.deleteFromStorage();
   }
 }
 
