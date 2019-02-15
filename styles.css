@@ -1,16 +1,14 @@
 body {
   background-color: #edf2f2;
-  display: grid;
   font-family: "Open Sans", sans-serif;
-  grid-template-rows: 0.5fr 2fr 5fr;
 }
 
 header {
   background-color: #322a30;
   color: #b2a1b1;
   display: flex;
-  grid-row: 1;
   position: relative;
+  height: 110px;
 }
 
 h1 {
@@ -103,57 +101,53 @@ textarea {
 }
 
 .idea-box {
-  border: solid 2px #ACAAB6;
   border-radius: 5px;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  border: solid 2px #ACAAB6;
   grid-column: 2;
-  display: grid;
-  grid-template-rows: 26% 53% 21%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .idea-box-title {
   color: #5E5C6B;
-  font-weight: 800;
   font-size: 2rem;
-  padding: 1rem;
+  font-weight: 800;
   margin: 0;
-  grid-row: 1;
+  padding: 1rem;
 }
 
 .idea-box-body {
-  font-weight: 300;
   font-size: 1.5rem;
-  padding: 1rem;
+  font-weight: 300;
   margin: 0;
-  grid-row: 2;
+  padding: 1rem;
 }
 
 .quality-section{
-  display: flex;
-  border-top: solid #ACAAB6 2px;
   align-items: center;
+  border-top: solid #ACAAB6 2px;
+  display: flex;
   justify-content: space-between;
 }
 
 .quality-section div {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .quality {
-  display: inline;
   color: #5E5C6B;
-  font-weight: 800;
+  display: inline;
   font-size: 1rem;
-  padding: 0;
+  font-weight: 800;
   margin: 0;
+  padding: 0;
 }
 
 .buttons{
   height: 1.5rem;
-  padding: 2px 5px 0 5px;
   margin: 0;
+  padding: 2px 5px 0 5px;
 }
 
 @media only screen and (max-width: 550px) {
@@ -162,6 +156,7 @@ textarea {
     bottom: 40%;
     font-size: 10vw;
     left: 10%;
+    margin-bottom: 10px;
     margin: 0;
     position: absolute;
   }
@@ -170,7 +165,6 @@ textarea {
   .ideas {
     grid-template-columns: 10% 80% 10%;
     margin: 10px 0 0 0;
-    display:;
   }
 
   .search {
@@ -184,9 +178,9 @@ textarea {
   }
 
   .idea-box {
-    margin: 1.5rem auto;
     display: inline;
-    height: auto;
+    height: fit-content;
+    margin: 1.5rem auto;
   }
 
   .idea-box-title {
