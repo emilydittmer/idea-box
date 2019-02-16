@@ -1,9 +1,9 @@
 class Idea {
-  constructor(id, title, body) {
+  constructor(id, title, body, quality = 'Genius') {
     this.id = id;
     this.title = title;
     this.body = body;
-    this.quality = 'Swill';
+    this.quality = quality;
   }
   saveToStorage(){
     var stringIdeas = JSON.stringify(allIdeas);
@@ -30,4 +30,6 @@ class Idea {
 
 
 
-//function updateQuality
+// updateQuality(){
+//   var qualities = ['Swill', 'Plausible', 'Genius'];
+// }

@@ -4,6 +4,7 @@ var saveButton = document.querySelector('#save-btn');
 var ideaBox = document.querySelector('.ideas');
 var allIdeas = JSON.parse(localStorage.getItem('stringIdeas')) || [];
 saveButton.addEventListener('click', saveIdea);
+var qualities = ['Swill', 'Plausible', 'Genius'];
 
 function saveIdea() {
   var title = titleInput.value;
@@ -12,12 +13,10 @@ function saveIdea() {
   var newIdea = new Idea(id, title, body);
   displayIdea(newIdea);
   allIdeas.push(newIdea);
-  console.log(allIdeas);
   newIdea.saveToStorage();
 }
+
 function displayIdea(ideaObj) {
-  console.log(ideaObj.id);
-  //var cardContainer = create section 
   //cardContainer.dataset.id = cardId;
   var ideaCard =  `<section class="idea-box" id="${ideaObj.id}">
                       <h3 class="idea-box-title" contenteditable="true">${ideaObj.title}</h3>
@@ -26,7 +25,7 @@ function displayIdea(ideaObj) {
                       <div>
                         <input type="image" src="images/downvote.svg" class="buttons" id="downvote" alt="Down Vote">
                         <input type="image" src="images/upvote.svg" class="buttons" id="upvote" alt="Up Vote">
-                        <h5>Quality: ${ideaObj.quality}</h5>
+                        <h5>Quality: <span id="quality">${ideaObj.quality}</span></h5>
                       </div>
                       <input type="image" src="images/delete.svg" class="buttons" id="delete" alt="Delete Button">
                     </div>
@@ -37,43 +36,61 @@ function displayIdea(ideaObj) {
 ideaBox.addEventListener('click', clickHandler);
   
 function clickHandler(e){
-  if (e.target.id === 'upvote'){
-    var id = parseInt(e.target.parentElement.id);
-   
+  deleteIdea(e);
+  upvote(e);
+  downvote(e);
+}
+function upvote(e){
+    if (e.target.id === 'upvote'){
+    var id = parseInt(e.target.closest('section').id);
     var ideaWeWant;
+    console.log(id);
     for (var i = 0; i < allIdeas.length; i++) {
       if (allIdeas[i].id === id) {
         ideaWeWant = allIdeas[i];
-        ideaWeWant.quality = 'Plausible';
+        var qualityIndex = qualities.indexOf(ideaWeWant.quality);
+        if (qualityIndex < 2 ) {
+          qualityIndex++
+        ideaWeWant.quality = qualities[qualityIndex];
+        var idWeWant = allIdeas[i].id;
+        console.log(idWeWant);
+          document.getElementById('quality').innerText = qualities[qualityIndex];
+          console.log(document.getElementById('quality'));
       }
-    console.log(ideaWeWant);
     }
   }
+}
+}
+function downvote(e) {
   if(e.target.id === 'downvote'){
-    var id = parseInt(e.target.parentElement.id);
-    var ideaWeWant;
-    for (var i = 0; i < allIdeas.length; i++) {
-      if (allIdeas[i].id === id) {
-        ideaWeWant = allIdeas[i];
-        ideaWeWant.quality = 'Genius';
+  var id = parseInt(e.target.closest('section').id);
+  var ideaWeWant;
+  for (var i = 0; i < allIdeas.length; i++) {
+    if (allIdeas[i].id === id) {
+      ideaWeWant = allIdeas[i];
+      var qualityIndex = qualities.indexOf(ideaWeWant.quality);
+      if (qualityIndex > 0 ) {
+        qualityIndex--
+        ideaWeWant.quality = qualities[qualityIndex];
+        document.getElementById('quality').innerText = qualities[qualityIndex];
+        console.log(qualityIndex);
       }
-      console.log(ideaWeWant);
     }
   }
+}
+}
+function deleteIdea(e) {
+  var id = parseInt(e.target.closest('section').id);
   if(e.target.id === 'delete'){
     var card = e.target.closest('.idea-box');
     var id = parseInt(card.id);
     card.remove();
     var neededIdea = allIdeas.find(function(idea) {
-      console.log(idea.id);
-      console.log(id);
       return idea.id === id
     });
-    console.log(neededIdea);
     neededIdea.deleteFromStorage();
   }
 }
-
 
 //quality buttons switch case
 window.onload = loadIdeas(allIdeas);
@@ -87,6 +104,21 @@ function loadIdeas(array) {
   });
 }
 
+
+
+  /* 
+    -- Easy save to loal storage
+    -- checks to see if id exists
+    -- if not, adds to local storage
+    -- if id does exist, updates id, replace index
+
+
+    -- save one, delete one
+
+    USE THIS!!!!
+
+
+  */
   // retrievedIdeas = localStorage.getItem("stringIdeas");
   // console.log(retrievedIdeas);
   // parsedIdeas = JSON.parse(retrievedIdeas);
