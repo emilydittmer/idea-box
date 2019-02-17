@@ -4,7 +4,7 @@ var saveButton = document.querySelector('#save-btn');
 var ideaBox = document.querySelector('.ideas');
 var allIdeas = JSON.parse(localStorage.getItem('stringIdeas')) || [];
 saveButton.addEventListener('click', saveIdea);
-var qualities = ['Swill', 'Plausible', 'Genius'];
+var qualities = ['Quality: Swill', 'Quality: Plausible', 'Quality: Genius'];
 
 function saveIdea() {
   var title = titleInput.value;
@@ -16,6 +16,17 @@ function saveIdea() {
   newIdea.saveToStorage();
 }
 
+ideaBox.addEventListener('keyup', editIdea);
+function editIdea(e) {
+  var editIdeaTitle = document.querySelector('.idea-box-title');
+  var editIdeaBody = document.querySelector('.idea-box-body').value;
+  console.log(editIdeaTitle.value);
+  var id = parseInt(e.target.closest('section').id);
+  var editedIdea = new Idea()
+
+
+}
+
 function displayIdea(ideaObj) {
   //cardContainer.dataset.id = cardId;
   var ideaCard =  `<section class="idea-box" id="${ideaObj.id}">
@@ -25,7 +36,7 @@ function displayIdea(ideaObj) {
                       <div>
                         <input type="image" src="images/downvote.svg" class="buttons" id="downvote" alt="Down Vote">
                         <input type="image" src="images/upvote.svg" class="buttons" id="upvote" alt="Up Vote">
-                        <h5>Quality: <span id="quality">${ideaObj.quality}</span></h5>
+                        <h5>Quality: ${ideaObj.quality}</h5>
                       </div>
                       <input type="image" src="images/delete.svg" class="buttons" id="delete" alt="Delete Button">
                     </div>
@@ -34,33 +45,33 @@ function displayIdea(ideaObj) {
 }
 
 ideaBox.addEventListener('click', clickHandler);
-  
+
+
 function clickHandler(e){
   deleteIdea(e);
   upvote(e);
   downvote(e);
 }
+
 function upvote(e){
     if (e.target.id === 'upvote'){
     var id = parseInt(e.target.closest('section').id);
     var ideaWeWant;
-    console.log(id);
     for (var i = 0; i < allIdeas.length; i++) {
       if (allIdeas[i].id === id) {
         ideaWeWant = allIdeas[i];
         var qualityIndex = qualities.indexOf(ideaWeWant.quality);
         if (qualityIndex < 2 ) {
           qualityIndex++
-        ideaWeWant.quality = qualities[qualityIndex];
-        var idWeWant = allIdeas[i].id;
-        console.log(idWeWant);
-          document.getElementById('quality').innerText = qualities[qualityIndex];
-          console.log(document.getElementById('quality'));
+          ideaWeWant.quality = qualities[qualityIndex];
+          var placeholder = e.target.closest('div.quality-section').children[0];
+          placeholder.children[2].innerText = qualities[qualityIndex];
+        }
+        }
       }
     }
   }
-}
-}
+
 function downvote(e) {
   if(e.target.id === 'downvote'){
   var id = parseInt(e.target.closest('section').id);
@@ -69,16 +80,17 @@ function downvote(e) {
     if (allIdeas[i].id === id) {
       ideaWeWant = allIdeas[i];
       var qualityIndex = qualities.indexOf(ideaWeWant.quality);
-      if (qualityIndex > 0 ) {
-        qualityIndex--
-        ideaWeWant.quality = qualities[qualityIndex];
-        document.getElementById('quality').innerText = qualities[qualityIndex];
-        console.log(qualityIndex);
+        if (qualityIndex > 0 ) {
+          qualityIndex--
+          ideaWeWant.quality = qualities[qualityIndex];
+          var placeholder = e.target.closest('div.quality-section').children[0];
+          placeholder.children[2].innerText = qualities[qualityIndex];
+        }
       }
     }
   }
 }
-}
+
 function deleteIdea(e) {
   var id = parseInt(e.target.closest('section').id);
   if(e.target.id === 'delete'){
