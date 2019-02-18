@@ -6,9 +6,10 @@ var ideaSection = document.querySelector('.ideas');
 var allIdeas = JSON.parse(localStorage.getItem('stringIdeas')) || [];
 var searchBtn = document.querySelector('#search-btn');
 
-//Event Listenerss//
+//Event Listeners//
 saveBtn.addEventListener('click', saveIdea);
 searchBtn.addEventListener('click', searchIdeas);
+ideaSection.addEventListener('focusout', editIdeas);
 
 window.onload = loadIdeas(allIdeas);
 
@@ -80,3 +81,16 @@ function searchIdeas(){
     displayIdea(element);
   })
 }
+
+function editIdeas(e) {
+  var card = e.target.closest('.idea-box');
+  var cardId = parseInt(card.id);
+  var ideaTitle = ideaSection.firstChild.firstChild.nextSibling;
+  var editTitle = ideaTitle.innerText;
+  var ideaBody = ideaSection.firstChild.firstChild.nextSibling.nextSibling.nextSibling;
+  var editBody = ideaBody.innerText;
+  var neededIdea = allIdeas.find(function(idea) {
+    return idea.id === cardId
+  });
+  neededIdea.updateContent(editTitle, editBody);
+} 
