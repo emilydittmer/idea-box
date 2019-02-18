@@ -50,8 +50,9 @@ function loadIdeas(array) {
 }
 
 function clickHandler(e) {
-  deleteIdea(e);
-    if(e.target.id === 'delete');
+  if(e.target.id === 'delete') {
+    deleteIdea(e);
+  }
 }
 
 function deleteIdea(e) {
