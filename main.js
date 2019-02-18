@@ -6,7 +6,7 @@ var ideaSection = document.querySelector('.ideas');
 var allIdeas = JSON.parse(localStorage.getItem('stringIdeas')) || [];
 var searchBtn = document.querySelector('#search-btn');
 
-//Event Listeners//
+//Event Listenerss//
 saveBtn.addEventListener('click', saveIdea);
 searchBtn.addEventListener('click', searchIdeas);
 
