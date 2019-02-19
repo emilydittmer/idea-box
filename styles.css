@@ -31,11 +31,11 @@ span {
   justify-content: flex-end;
   position: absolute;
   right: 3%;
+  width: 25%;
 }
 
 #search-field {
   padding: 0 0 0 7px;
-  width: 25%;
 }
 
 #search-btn {
@@ -158,7 +158,7 @@ textarea {
   outline: none;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 590px) {
   
   h1 {
     bottom: 40%;
@@ -178,6 +178,7 @@ textarea {
   .search {
     bottom: 8%;
     right: 13%;
+    width: 77%;
   }
 
   #search-field {
