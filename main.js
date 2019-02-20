@@ -111,15 +111,16 @@ function clearSearchField(){
 function editIdeas(e) {
   var card = e.target.closest('.idea-box');
   var cardId = parseInt(card.id);
-  var ideaTitle = ideaSection.firstChild.firstChild.nextSibling;
+  var ideaTitle = card.firstChild.nextSibling;
   var editTitle = ideaTitle.innerText;
-  var ideaBody = ideaSection.firstChild.firstChild.nextSibling.nextSibling.nextSibling;
+  var ideaBody = card.firstChild.nextSibling.nextSibling.nextSibling;
+  console.log(ideaBody);
   var editBody = ideaBody.innerText;
   var neededIdea = allIdeas.find(function(idea) {
     return idea.id === cardId;
   });
   neededIdea.updateContent(editTitle, editBody);
-} 
+}  
 
 function upVote(e) {
   var card = e.target.closest('.idea-box');
