@@ -95,12 +95,14 @@ textarea {
 }
 
 .quality-filter-btn {
+  display: flex;
   grid-column: 2;
   text-align: center;
+  justify-content: space-between;
 }
 
 .filter-btn {
-  margin: 0 7px;
+  margin: 0 0px;
   width: 31%;
 }
 
@@ -171,6 +173,7 @@ textarea {
 .quality-text {
   color: #000;
 }
+
 @media only screen and (max-width: 840px) {
   
   header{
@@ -202,14 +205,10 @@ textarea {
     width: 77%;
   }
 
-  .filter-btn {
-    width: auto;
-  }
-
   .idea-box {
     display: inline;
     height: fit-content;
-    margin: 1.5rem auto;
+    margin:Â 1.5rem auto;
   }
 
   .idea-box-title {
@@ -217,10 +216,14 @@ textarea {
   }
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 400px) {
+
+  .quality-filter-btn {
+    flex-direction: column;
+  }
 
   .filter-btn {
-    width: 25%;
+    margin: 5px 0;
+    width: 100%;
   }
 }
-
