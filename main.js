@@ -10,7 +10,7 @@ var searchInput = document.querySelector('#search');
 
 //Event Listeners//
 saveBtn.addEventListener('click', saveIdea);
-searchBtn.addEventListener('click', searchIdeas);
+searchInput.addEventListener('input', searchIdeas);
 ideaSection.addEventListener('focusout', editIdeas);
 qualityBtnContainer.addEventListener('click', qualityHandler);
 
@@ -101,7 +101,6 @@ function searchIdeas(){
   searchIdeas.forEach(function(element) {
     displayIdea(element);
   });
-  clearSearchField();
 }
 
 function clearSearchField(){
