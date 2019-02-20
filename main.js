@@ -5,11 +5,14 @@ var saveBtn = document.querySelector('#save-btn');
 var ideaSection = document.querySelector('.ideas');
 var allIdeas = JSON.parse(localStorage.getItem('stringIdeas')) || [];
 var searchBtn = document.querySelector('#search-btn');
+var qualityBtnContainer = document.querySelector('.quality-filter-btn');
+var searchInput = document.querySelector('#search');
 
 //Event Listeners//
 saveBtn.addEventListener('click', saveIdea);
 searchBtn.addEventListener('click', searchIdeas);
 ideaSection.addEventListener('focusout', editIdeas);
+qualityBtnContainer.addEventListener('click', qualityHandler);
 
 window.onload = loadIdeas(allIdeas);
 
@@ -30,6 +33,12 @@ function saveIdea(){
   displayIdea(newIdea);
   allIdeas.push(newIdea);
   newIdea.saveToStorage();
+  clearIdeaFields();
+}
+
+function clearIdeaFields(){
+  titleInput.value = '';
+  bodyInput.value = '';
 }
 
 function displayIdea(ideaObj) {
@@ -84,14 +93,19 @@ function removeIdeas() {
 
 function searchIdeas(){
   removeIdeas();
-  var searchInput = document.querySelector('#search').value;
-  var searchValue = searchInput.toLowerCase();
-  var searchIdeas = allIdeas.filter(function(ideas){
-    return ideas.title.toLowerCase().includes(searchValue) || ideas.body.toLowerCase().includes(searchValue);
+  var newSearch = searchInput.value;
+  var searchValue = newSearch.toLowerCase();
+  var searchIdeas = allIdeas.filter(function(idea){
+    return idea.title.toLowerCase().includes(searchValue) || idea.body.toLowerCase().includes(searchValue);
   });
   searchIdeas.forEach(function(element) {
     displayIdea(element);
-  })
+  });
+  clearSearchField();
+}
+
+function clearSearchField(){
+  searchInput.value = '';
 }
 
 function editIdeas(e) {
@@ -133,4 +147,26 @@ function downVote(e) {
     qualityText.innerText = 'Swill';
     ideaToUpdate.updateQuality('Swill');
   }
+}
+
+function qualityHandler(e) {
+  if(e.target.id === 'swill-btn') {
+    qualityFilter('Swill');
+  }
+  else if (e.target.id === 'plausible-btn') {
+    qualityFilter('Plausible');
+  }
+  else if (e.target.id === 'genius-btn') {
+    qualityFilter('Genius');
+  }
+}
+
+function qualityFilter(quality){
+  removeIdeas();
+  var filteredIdeas = allIdeas.filter(function(idea){
+    return idea.quality.includes(quality);
+  });
+  filteredIdeas.forEach(function(element) {
+    displayIdea(element);
+  });
 }
