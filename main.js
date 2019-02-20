@@ -43,7 +43,7 @@ function clearIdeaFields(){
 
 function displayIdea(ideaObj) {
     var ideaCard =  
-      `<section class="idea-box" id="${ideaObj.id}">
+      `<section class="idea-box" data-id="${ideaObj.id}">
           <h3 class="idea-box-title" contenteditable="true">${ideaObj.title}</h3>
           <h4 class="idea-box-body" contenteditable="true">${ideaObj.body}</h4>
         <div class="quality-section">
@@ -75,7 +75,7 @@ function clickHandler(e) {
 
 function deleteIdea(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   card.remove();
   var neededIdea = findIdea(cardId)
   neededIdea.deleteFromStorage();
@@ -110,7 +110,7 @@ function clearSearchField(){
 
 function editIdeas(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   var ideaTitle = card.firstChild.nextSibling;
   var editTitle = ideaTitle.innerText;
   var ideaBody = card.firstChild.nextSibling.nextSibling.nextSibling;
@@ -124,7 +124,7 @@ function editIdeas(e) {
 
 function upVote(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   var qualityText = e.target.parentElement.querySelector('span');
   var ideaToUpdate = findIdea(cardId);
   if (qualityText.innerText === 'Swill') {
@@ -138,7 +138,7 @@ function upVote(e) {
 
 function downVote(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   var qualityText = e.target.parentElement.querySelector('span');
   var ideaToUpdate = findIdea(cardId);
   if (qualityText.innerText === 'Genius') {
