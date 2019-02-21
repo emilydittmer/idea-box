@@ -7,12 +7,15 @@ var allIdeas = JSON.parse(localStorage.getItem('stringIdeas')) || [];
 var searchBtn = document.querySelector('#search-btn');
 var qualityBtnContainer = document.querySelector('.quality-filter-btn');
 var searchInput = document.querySelector('#search');
-
+var titleCounter = 0;
+var bodyCounter = 0;
 //Event Listeners//
 saveBtn.addEventListener('click', saveIdea);
 searchBtn.addEventListener('click', searchIdeas);
 ideaSection.addEventListener('focusout', editIdeas);
 qualityBtnContainer.addEventListener('click', qualityHandler);
+titleInput.addEventListener('keyup', toggleDisableSaveBtn);
+bodyInput.addEventListener('keyup', toggleDisableSaveBtn);
 
 window.onload = loadIdeas(allIdeas);
 
@@ -60,6 +63,22 @@ function displayIdea(ideaObj) {
 
 ideaSection.addEventListener('click', clickHandler);
 
+function toggleDisableSaveBtn(e) {
+  var path = e.path[0];
+  if (path.id === 'title-input' && event.which !== 8){
+    titleCounter++
+  } else if (path.id === 'title-input' && event.which === 8){
+    titleCounter--
+  }
+  if (path.id === 'body-input' && event.which !== 8){
+    bodyCounter++
+  } else if (path.id === 'body-input' && event.which === 8){
+    bodyCounter--
+  }
+  if (titleCounter > 0 && bodyCounter > 0 && saveBtn.disabled){
+    saveBtn.disabled = !saveBtn.disabled;
+  }
+}
 
 function clickHandler(e) {
   if(e.target.id === 'delete') {

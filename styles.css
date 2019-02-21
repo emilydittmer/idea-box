@@ -23,12 +23,22 @@ span {
   color: #fff;
 }
 
+button {
+  cursor: pointer;
+  outline: none;
+}
+
+h5 {
+  color: #7c7879;
+}
+
 .search {
   border-radius: 5px;
   border: solid 2px #ACAAB6;
   bottom: 30%;
   height: 35px;
   justify-content: flex-end;
+  padding-left: 10px;
   position: absolute;
   right: 3%;
   width: 25%;
@@ -53,7 +63,17 @@ span {
   grid-template-columns: 25% 50% 25%;
 }
 
-.form h2, #idea-title, #title-input, #idea-body, #body-input, #save-btn {
+#idea-title,
+#idea-body {
+  padding-bottom: 10px;
+}
+
+.form h2, 
+#idea-title, 
+#title-input, 
+#idea-body, 
+#body-input, 
+#save-btn {
   grid-column: 2;
 }
 
@@ -67,8 +87,8 @@ h2 {
 }
 
 .idea-inputs {
-  border-radius: 5px;
   border: solid 2px #ACAAB6;
+  border-radius: 5px;
   height: 41px;
 }
 
@@ -84,7 +104,8 @@ textarea {
   outline-color: #524649;
 }
 
-#save-btn, .filter-btn{
+#save-btn, 
+.filter-btn{
   background-color: #6e646b;
   border-radius: 5px;
   color: #fff;
@@ -94,16 +115,30 @@ textarea {
   margin: 24px 0 24px 0;
 }
 
+#save-btn:hover {
+  background-color: #524649;
+}
+
+#save-btn:disabled {
+  background-color: #c2c1c0;
+}
+
 .quality-filter-btn {
   display: flex;
   grid-column: 2;
-  text-align: center;
   justify-content: space-between;
+  padding-bottom: 20px;
+  text-align: center;
 }
 
 .filter-btn {
   margin: 0 0px;
   width: 31%;
+}
+
+.filter-btn:hover {
+  background-color: #524649;
+  color: #fff;
 }
 
 .ideas {
@@ -114,15 +149,15 @@ textarea {
 }
 
 .idea-box {
-  border-radius: 5px;
   border: solid 2px #ACAAB6;
+  border-radius: 5px;
   grid-column: 2;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
 .idea-box-title {
-  color: #5E5C6B;
+  color: #6e646b;
   font-size: 2rem;
   font-weight: 800;
   margin: 0;
@@ -130,6 +165,7 @@ textarea {
 }
 
 .idea-box-body {
+  color: #7c7879;
   font-size: 1.5rem;
   font-weight: 300;
   margin: 0;
@@ -156,9 +192,6 @@ textarea {
   margin: 0;
   padding: 0;
 }
-#quality {
-  color: black;
-}
 
 .buttons{
   height: 1.5rem;
@@ -171,13 +204,13 @@ textarea {
 }
 
 .quality-text {
-  color: #000;
+  color: #7c7879;
 }
 
 @media only screen and (max-width: 840px) {
   
   header{
-    height: 130px;
+    height: 150px;
   }
 
   h1 {
@@ -192,7 +225,7 @@ textarea {
   .form, 
   .ideas {
     grid-template-columns: 10% 80% 10%;
-    margin: 10px 0 0 0;
+    /*margin: 10px 0 0 0;*/
   }
 
   .search {
@@ -216,7 +249,19 @@ textarea {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 420px) {
+
+  header {
+    height: 130px;
+  }
+
+  .title {
+    padding: 20px 0;
+  }
+
+  .search {
+    bottom: 15%;
+  }
 
   .quality-filter-btn {
     flex-direction: column;
