@@ -1,4 +1,3 @@
-//Global Variables//
 var titleInput = document.querySelector('#title-input');
 var bodyInput = document.querySelector('#body-input');
 var saveBtn = document.querySelector('#save-btn');
@@ -9,13 +8,16 @@ var qualityBtnContainer = document.querySelector('.quality-filter-btn');
 var searchInput = document.querySelector('#search');
 var titleCounter = 0;
 var bodyCounter = 0;
-//Event Listeners//
+
+var showBtn = document.querySelector('#show-ideas-btn');
+
 saveBtn.addEventListener('click', saveIdea);
-searchBtn.addEventListener('click', searchIdeas);
+searchInput.addEventListener('input', searchIdeas);
 ideaSection.addEventListener('focusout', editIdeas);
 qualityBtnContainer.addEventListener('click', qualityHandler);
 titleInput.addEventListener('keyup', toggleDisableSaveBtn);
 bodyInput.addEventListener('keyup', toggleDisableSaveBtn);
+showBtn.addEventListener('click', showIdeas);
 
 window.onload = loadIdeas(allIdeas);
 
@@ -26,6 +28,7 @@ function loadIdeas(array) {
     allIdeas.push(newIdea);
     displayIdea(newIdea);
   });
+  hideIdeas();
 }
 
 function saveIdea(){
@@ -46,7 +49,7 @@ function clearIdeaFields(){
 
 function displayIdea(ideaObj) {
     var ideaCard =  
-      `<section class="idea-box" id="${ideaObj.id}">
+      `<section class="idea-box" data-id="${ideaObj.id}">
           <h3 class="idea-box-title" contenteditable="true">${ideaObj.title}</h3>
           <h4 class="idea-box-body" contenteditable="true">${ideaObj.body}</h4>
         <div class="quality-section">
@@ -94,7 +97,7 @@ function clickHandler(e) {
 
 function deleteIdea(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   card.remove();
   var neededIdea = findIdea(cardId)
   neededIdea.deleteFromStorage();
@@ -120,7 +123,6 @@ function searchIdeas(){
   searchIdeas.forEach(function(element) {
     displayIdea(element);
   });
-  clearSearchField();
 }
 
 function clearSearchField(){
@@ -129,11 +131,10 @@ function clearSearchField(){
 
 function editIdeas(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   var ideaTitle = card.firstChild.nextSibling;
   var editTitle = ideaTitle.innerText;
   var ideaBody = card.firstChild.nextSibling.nextSibling.nextSibling;
-  console.log(ideaBody);
   var editBody = ideaBody.innerText;
   var neededIdea = allIdeas.find(function(idea) {
     return idea.id === cardId;
@@ -143,7 +144,7 @@ function editIdeas(e) {
 
 function upVote(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   var qualityText = e.target.parentElement.querySelector('span');
   var ideaToUpdate = findIdea(cardId);
   if (qualityText.innerText === 'Swill') {
@@ -157,7 +158,7 @@ function upVote(e) {
 
 function downVote(e) {
   var card = e.target.closest('.idea-box');
-  var cardId = parseInt(card.id);
+  var cardId = parseInt(card.dataset.id);
   var qualityText = e.target.parentElement.querySelector('span');
   var ideaToUpdate = findIdea(cardId);
   if (qualityText.innerText === 'Genius') {
@@ -190,3 +191,31 @@ function qualityFilter(quality){
     displayIdea(element);
   });
 }
+
+function hideIdeas(){
+  var ideasOnPage = document.querySelectorAll('.idea-box');
+    for (var i = 10; i < ideasOnPage.length; i++) {
+      ideasOnPage[i].classList.add('hidden-idea');
+  }
+}
+
+function showIdeas() {
+  var ideasOnPage = document.querySelectorAll('.idea-box');
+  if (showBtn.innerText === 'Show less...') {
+    hideIdeas();
+    showBtn.innerText = 'Show more...';
+  } else if (ideasOnPage.length > 10) {
+    showAllIdeas();
+    showBtn.innerText = 'Show less...';
+  }
+}
+
+function showAllIdeas() {
+  var ideasOnPage = document.querySelectorAll('.idea-box');
+    for (var i = 10; i < ideasOnPage.length; i++) {
+      ideasOnPage[i].classList.remove('hidden-idea');
+    }
+}
+
+
+
