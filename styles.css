@@ -12,7 +12,6 @@ header {
 }
 
 h1 {
-  bottom: 1%;
   font-size: 3rem;
   font-weight: 800;
   letter-spacing: .05rem;
@@ -28,7 +27,6 @@ span {
   border: solid 2px #ACAAB6;
   bottom: 30%;
   height: 35px;
-  justify-content: flex-end;
   position: absolute;
   right: 3%;
   width: 25%;
@@ -36,6 +34,10 @@ span {
 
 #search-field {
   padding: 0 0 0 7px;
+}
+
+.search:focus {
+  outline-color: #524649;
 }
 
 #search-btn {
@@ -49,7 +51,6 @@ span {
 .form {
   background-color: #edf2f2;
   display: grid;
-  grid-row: 2;
   grid-template-columns: 25% 50% 25%;
 }
 
@@ -84,7 +85,7 @@ textarea {
   outline-color: #524649;
 }
 
-#save-btn, .filter-btn, #show-ideas-btn{
+#save-btn, .filter-btn, #show-ideas-btn {
   background-color: #6e646b;
   border-radius: 5px;
   color: #fff;
@@ -98,8 +99,8 @@ textarea {
 .quality-filter-btn {
   display: flex;
   grid-column: 2;
-  text-align: center;
   justify-content: space-between;
+  text-align: center;
 }
 
 .filter-btn {
@@ -107,10 +108,9 @@ textarea {
   width: 31%;
 }
 
-.ideas{
+.ideas {
   background-color: #fbfdfd;
   display: grid;
-  grid-row: 3;
   grid-template-columns: 25% 50% 25%;
 }
 
@@ -147,11 +147,15 @@ textarea {
 }
 
 #show-ideas-btn {
-  width: 50%;
   cursor: pointer;
+  width: 50%;
 }
 
-.quality-section{
+#show-ideas-btn:focus {
+  outline-color: #524649;
+}
+
+.quality-section {
   align-items: center;
   border-top: solid #ACAAB6 2px;
   display: flex;
@@ -163,22 +167,9 @@ textarea {
   display: flex;
 }
 
-.quality {
-  color: #5E5C6B;
-  display: inline;
-  font-size: 1rem;
-  font-weight: 800;
-  margin: 0;
-  padding: 0;
-}
-#quality {
-  color: black;
-}
-
-.buttons{
+.buttons {
   cursor: pointer;
   height: 1.5rem;
-  margin: 0;
   padding: 2px 5px 0 5px;
 }
 
@@ -192,7 +183,7 @@ textarea {
 
 @media only screen and (max-width: 840px) {
   
-  header{
+  header {
     height: 130px;
   }
 
@@ -200,7 +191,6 @@ textarea {
     bottom: 40%;
     font-size: 10vw;
     left: 10%;
-    margin-bottom: 10px;
     margin: 0;
     position: absolute;
   }
@@ -208,7 +198,6 @@ textarea {
   .form, 
   .ideas {
     grid-template-columns: 10% 80% 10%;
-    margin: 10px 0 0 0;
   }
 
   .search {
@@ -217,18 +206,9 @@ textarea {
     width: 77%;
   }
 
-  #search-field {
-    width: 77%;
-  }
-
   .idea-box {
     display: inline;
     height: fit-content;
-    margin:Â 1.5rem auto;
-  }
-
-  .idea-box-title {
-    margin-bottom: 10px;
   }
 
   #show-ideas-btn {
