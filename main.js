@@ -1,4 +1,3 @@
-//Global Variablaes//
 var titleInput = document.querySelector('#title-input');
 var bodyInput = document.querySelector('#body-input');
 var saveBtn = document.querySelector('#save-btn');
@@ -9,7 +8,6 @@ var qualityBtnContainer = document.querySelector('.quality-filter-btn');
 var searchInput = document.querySelector('#search');
 var showBtn = document.querySelector('#show-ideas-btn');
 
-//Event Listeners//
 saveBtn.addEventListener('click', saveIdea);
 searchInput.addEventListener('input', searchIdeas);
 ideaSection.addEventListener('focusout', editIdeas);
@@ -116,7 +114,6 @@ function editIdeas(e) {
   var ideaTitle = card.firstChild.nextSibling;
   var editTitle = ideaTitle.innerText;
   var ideaBody = card.firstChild.nextSibling.nextSibling.nextSibling;
-  console.log(ideaBody);
   var editBody = ideaBody.innerText;
   var neededIdea = allIdeas.find(function(idea) {
     return idea.id === cardId;
@@ -192,7 +189,7 @@ function showIdeas() {
   }
 }
 
-function showAllIdeas(array) {
+function showAllIdeas() {
   var ideasOnPage = document.querySelectorAll('.idea-box');
     for (var i = 10; i < ideasOnPage.length; i++) {
       ideasOnPage[i].classList.remove('hidden-idea');
